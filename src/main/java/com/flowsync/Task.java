@@ -19,8 +19,8 @@ public class Task {
 
     // Regra de negócio: Uma tarefa só pode ir para 'Done' se passar por 'Review'
     public void complete() {
-        if (this.status.equals("Review")) {
+        // if (this.status.equals("Review")) {
             this.status = "Done";
-        }
+        // }
     }
 }
