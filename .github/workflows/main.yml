@@ -1,0 +1,30 @@
+name: CI FlowSync
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    [cite_start]runs-on: ubuntu-latest [cite: 340]
+
+    steps:
+    - name: Checkout código
+      [cite_start]uses: actions/checkout@v4 [cite: 342]
+
+    - name: Configurar JDK 17
+      [cite_start]uses: actions/setup-java@v4 [cite: 350]
+      with:
+        java-version: '17'
+        [cite_start]distribution: 'temurin' [cite: 352-353]
+
+    - name: Build e Testes com Maven
+      [cite_start]run: mvn -B clean install [cite: 357]
+
+    - name: Upload do Artefato
+      [cite_start]uses: actions/upload-artifact@v4 [cite: 359]
+      with:
+        name: flowsync-build
+        [cite_start]path: target/*.jar [cite: 362]
